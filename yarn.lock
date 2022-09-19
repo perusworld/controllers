@@ -606,18 +606,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ethereumjs/rlp@npm:^4.0.0-beta.2":
-  version: 4.0.0
-  resolution: "@ethereumjs/rlp@npm:4.0.0"
-  bin:
-    rlp: bin/rlp
-  checksum: 407dfb8b1e09b4282e6be561e8d74f8939da78f460c08456c7ba2fb273fc42ee16027955a07085abfd7600ffb466c4c4add159885e67abb91bc85db9dd81ffb5
-  languageName: node
-  linkType: hard
-
-"@ethereumjs/tx@npm:3.0.0":
-  version: 3.0.0
-  resolution: "@ethereumjs/tx@npm:3.0.0"
+"@ethereumjs/common@npm:^2.6.3":
+  version: 2.6.5
+  resolution: "@ethereumjs/common@npm:2.6.5"
   dependencies:
     crc-32: ^1.2.0
     ethereumjs-util: ^7.1.5
