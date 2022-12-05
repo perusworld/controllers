@@ -38,6 +38,17 @@ export enum KeyringTypes {
   qr = 'QR Hardware Wallet Device',
 }
 
+export interface KeyringInterface {
+  type: string;
+  serialize(): Promise<any>;
+  deserialize(opts?: any): void;
+  addAccounts(n: number): Promise<string[]>;
+  getAccounts(): Promise<string[]>;
+  signTransaction(address: string, tx: any): Promise<any>;
+  signMessage(withAccount: string, data: string): Promise<string>;
+  exportAccount(address: string): Promise<string>;
+}
+
 /**
  * @type KeyringObject
  *
@@ -739,6 +750,16 @@ export class KeyringController extends BaseController<
     });
     await this.#keyring.persistAllKeyrings();
     await this.fullUpdate();
+  }
+
+  private async addKeyring(type: string): Promise<KeyringInterface> {
+    const keyring = await this.#keyring.addNewKeyring(type);
+    return keyring;
+  }
+
+  public async getOrAddKeyring(type: string): Promise<KeyringInterface> {
+    const keyring = this.#keyring.getKeyringsByType(type)[0];
+    return keyring || (await this.addKeyring(type));
   }
 }
 
